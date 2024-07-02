@@ -1,0 +1,8 @@
+# Importowanie modułu ActiveDirectory
+Import-Module ActiveDirectory
+
+# Pobieranie wszystkich użytkowników
+$users = Get-ADUser -Filter * -Property Name,SamAccountName,Enabled | Select-Object Name,SamAccountName,Enabled
+
+# Zapisanie danych do pliku CSV
+$users | Export-Csv -Path C:\Users\michal.adamczyk\Desktop\File.csv -NoTypeInformation -Encoding UTF8
